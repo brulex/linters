@@ -1,0 +1,12 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "aliases": ["install"],
+      "hidden": true,
+      "description": "Add linters configuration to project",
+      "factory": "./configure-linters/index",
+      "schema": "./configure-linters/schema.json"
+    }
+  }
+}

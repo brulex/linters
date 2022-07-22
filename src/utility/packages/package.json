@@ -1,0 +1,28 @@
+{
+  "description": "Package versions used by schematics",
+  "comment": "This file is needed so that dependencies are synced.",
+  "private": true,
+  "dependencies": {
+    "@angular-eslint/eslint-plugin": "^13.0.1",
+    "@angular-eslint/eslint-plugin-template": "^13.0.1",
+    "@angular-eslint/template-parser": "^13.0.1",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-rxjs": "^5.0.2",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.7.1",
+    "prettier-eslint": "^13.0.0",
+    "prettier-plugin-organize-attributes": "0.0.5",
+    "stylelint": "^14.4.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recommended-scss": "^5.0.2",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-prettier": "^2.0.0",
+    "stylelint-scss": "^4.1.0"
+  }
+}

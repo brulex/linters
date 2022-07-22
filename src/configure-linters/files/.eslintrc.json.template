@@ -1,0 +1,203 @@
+{
+  "root": true,
+  "overrides": [
+    {
+      "files": ["*.ts", "*.js"],
+      "parserOptions": {
+        "project": ["<%= baseTsConfigPath %>"],
+        "createDefaultProgram": true
+      },
+      "plugins": ["simple-import-sort"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:rxjs/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/recommended--extra",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
+        "plugin:prettier/recommended"
+      ],
+      "settings": {
+        "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": true
+          }
+        }
+      },
+      "rules": {
+        "prettier/prettier": "error",
+        // --------------------------------
+        // DEFAULT ESLINT rules
+        // --------------------------------
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "<%= dasherize(prefix) %>",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "<%= camelize(prefix) %>",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/use-lifecycle-interface": "error", // override
+        // --------------------------------
+        // typescript-eslint rules
+        // --------------------------------
+        "@typescript-eslint/explicit-function-return-type": [
+          "error",
+          { "allowExpressions": true }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          { "accessibility": "no-public" }
+        ],
+        "@typescript-eslint/lines-between-class-members": [
+          "error",
+          "always",
+          { "exceptAfterSingleLine": true }
+        ],
+        "@typescript-eslint/no-inferrable-types": "error", // override
+        "@typescript-eslint/no-shadow": "error",
+        "@typescript-eslint/no-unused-expressions": "error",
+        "@typescript-eslint/prefer-for-of": "error",
+        "@typescript-eslint/no-useless-constructor": "error",
+        "@typescript-eslint/unbound-method": [
+          "error",
+          { "ignoreStatic": true }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          { "argsIgnorePattern": "^_", "ignoreRestSiblings": true }
+        ],
+        "@typescript-eslint/no-explicit-any": "error",
+        // --------------------------------
+        // Imports rules
+        // --------------------------------
+        "import/no-extraneous-dependencies": "error",
+        "simple-import-sort/exports": "error",
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              [
+                "^@angular/.*",
+                "^@?\\w" // other external libs
+              ],
+              ["@environment"],
+              ["^@core.*"],
+              ["^"] // other
+            ]
+          }
+        ],
+        // --------------------------------
+        // RxJS rules
+        // --------------------------------
+        "rxjs/finnish": [
+          "error",
+          {
+            "functions": false,
+            "methods": false,
+            "names": {
+              "^(canActivate|canActivateChild|canDeactivate|canLoad|intercept|resolve|validate|useValue)$": false
+            },
+            "parameters": true,
+            "properties": true,
+            "strict": false,
+            "types": {
+              "^EventEmitter$": false
+            },
+            "variables": true
+          }
+        ],
+        "rxjs/no-topromise": "error",
+        "rxjs/suffix-subjects": [
+          "error",
+          {
+            "parameters": true,
+            "properties": true,
+            "suffix": "$",
+            "types": {
+              "^EventEmitter$": false
+            },
+            "variables": true
+          }
+        ],
+        // --------------------------------
+        // DEFAULT ESLINT rules
+        // --------------------------------
+        "curly": "error",
+        "eqeqeq": ["error", "smart"],
+        "guard-for-in": "error",
+        "no-caller": "error",
+        "no-duplicate-imports": "error",
+        "no-else-return": ["error", { "allowElseIf": false }],
+        "no-eval": "error",
+        "no-new-wrappers": "error",
+        "no-restricted-imports": [
+          "error",
+          {
+            "paths": [
+              {
+                "name": "rxjs/Rx",
+                "message": "Please import directly from 'rxjs' instead"
+              }
+            ],
+            "patterns": [
+              {
+                "group": ["lodash/*", "lodash"],
+                "message": "Please use lodash-es that uses es modules"
+              },
+              {
+                "group": ["rxjs/internal*"],
+                "message": "Please do not use rxjs internal api"
+              }
+            ]
+          }
+        ],
+        "radix": "error",
+        "spaced-comment": ["error", "always", { "markers": ["/"] }],
+        // --------------------------------
+        // Disabled rules
+        // --------------------------------
+        "import/order": "off",
+        "import/prefer-default-export": "off",
+        "no-shadow": "off",
+        "no-plusplus": "off",
+        "no-useless-constructor": "off",
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/no-unsafe-argument": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/restrict-template-expressions": "off",
+        "@typescript-eslint/no-floating-promises": "off"
+      }
+    },
+    {
+      "files": ["*.js"],
+      "env": {
+        "node": true,
+        "commonjs": true
+      },
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}
