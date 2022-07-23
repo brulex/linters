@@ -1,5 +1,5 @@
 {
-  "name": "@blx/linters",
+  "name": "@brx/linters",
   "version": "1.0.0",
   "description": "Schematic to configure env with linters by @brulex",
   "homepage": "https://github.com/brulex/linters#readme",
