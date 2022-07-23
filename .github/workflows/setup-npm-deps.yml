@@ -1,4 +1,4 @@
-name: Update version and publish package
+name: Setup npm dependencies
 
 on:
   workflow_call:
