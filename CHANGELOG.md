@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/brulex/linters/compare/v1.0.0...v1.1.0) (2022-07-23)
+
+
+### Features
+
+* update dependencies ([9a7cbf6](https://github.com/brulex/linters/commit/9a7cbf6b2972cbc95b189b28ef17b974cffc9430))
+
 ## 1.0.0 (2022-07-23)
 
 
