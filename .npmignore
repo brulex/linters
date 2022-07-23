@@ -3,5 +3,6 @@
 !*.d.ts
 .idea
 .prettierrc.json
+jest.config.js
 .gitignore
 tsconfig.json
