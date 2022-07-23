@@ -2,6 +2,7 @@
   "name": "@blx/linters",
   "version": "1.0.0",
   "description": "Schematic to configure env with linters by @brulex",
+  "homepage": "https://github.com/brulex/linters#readme",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:watch": "npm run build -- --watch",
@@ -10,19 +11,24 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
+  "main": "src/index.js",
   "keywords": [
     "eslint",
     "prettier",
     "stylelint",
     "schematics"
   ],
-  "repository": "brulex/linters",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brulex/linters.git"
+  },
   "bugs": {
     "url": "https://github.com/brulex/linters/issues"
   },
   "author": "brulex",
   "license": "MIT",
   "schematics": "./src/collection.json",
+  "dependencies": {},
   "devDependencies": {
     "@angular-devkit/schematics": "^14.1.0",
     "@schematics/angular": "^14.1.0",
@@ -36,6 +42,5 @@
   },
   "peerDependencies": {
     "@angular/cli": ">= 12.0.0 < 14.0.0"
-  },
-  "dependencies": {}
+  }
 }
