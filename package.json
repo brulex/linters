@@ -6,7 +6,7 @@
     "build": "tsc -p tsconfig.json",
     "build:watch": "npm run build -- --watch",
     "clear": "tsc --build --clean",
-    "version": "standard-version --first-release",
+    "version": "standard-version",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
