@@ -12,7 +12,7 @@ import {
 } from '@angular-devkit/schematics';
 import { getWorkspace } from '@schematics/angular/utility/workspace';
 
-import { addDependency, DependencyType, ExistingBehavior } from '@schematics/angular/utility';
+import { addDependency, DependencyType } from '@schematics/angular/utility';
 import { JSONFile } from '@schematics/angular/utility/json-file';
 
 import { LATEST_VERSIONS, CONFIGURE_LINTERS_PACKAGES, PACKAGE_JSON_SCRIPTS } from '../utility/packages';
@@ -33,11 +33,13 @@ function addScriptsToPackageJson(): Rule {
 
 function addPackages(): Rule {
   return () => {
-    return chain(CONFIGURE_LINTERS_PACKAGES.map(name =>
-      addDependency(name, LATEST_VERSIONS[name], {
-        type: DependencyType.Dev,
-      }),
-    ))
+    return chain(
+      CONFIGURE_LINTERS_PACKAGES.map(name =>
+        addDependency(name, LATEST_VERSIONS[name], {
+          type: DependencyType.Dev,
+        }),
+      ),
+    );
   };
 }
 
@@ -60,10 +62,6 @@ export default function (options: ConfigureLintersSchema): Rule {
       move(project.root),
     ]);
 
-    return chain([
-      mergeWith(templateSource),
-      addPackages(),
-      addScriptsToPackageJson(),
-    ]);
+    return chain([mergeWith(templateSource), addPackages(), addScriptsToPackageJson()]);
   };
 }
