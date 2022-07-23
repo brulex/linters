@@ -12,7 +12,8 @@ jobs:
   setup:
     name: Setup
     runs-on: ubuntu-latest
-    uses: ./setup-npm-deps.yml
+    steps:
+      - uses: ./setup-npm-deps.yml@master
 
   prettier:
     name: Prettier check
