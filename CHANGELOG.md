@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/brulex/linters/compare/v1.1.0...v1.1.1) (2022-07-23)
+
+
+### Bug Fixes
+
+* **ng-add:** remove unused import ([82974a3](https://github.com/brulex/linters/commit/82974a3a650c9021485bb97b0d67579362b66841))
+
 ## [1.1.0](https://github.com/brulex/linters/compare/v1.0.0...v1.1.0) (2022-07-23)
 
 
