@@ -31,6 +31,16 @@ function addScriptsToPackageJson(): Rule {
   };
 }
 
+function addPackages(): Rule {
+  return () => {
+    return chain(CONFIGURE_LINTERS_PACKAGES.map(name =>
+      addDependency(name, LATEST_VERSIONS[name], {
+        type: DependencyType.Dev,
+      }),
+    ))
+  };
+}
+
 export default function (options: ConfigureLintersSchema): Rule {
   return async (host: Tree) => {
     const workspace = await getWorkspace(host);
@@ -52,12 +62,7 @@ export default function (options: ConfigureLintersSchema): Rule {
 
     return chain([
       mergeWith(templateSource),
-      ...CONFIGURE_LINTERS_PACKAGES.map(name =>
-        addDependency(name, LATEST_VERSIONS[name], {
-          type: DependencyType.Dev,
-          existing: ExistingBehavior.Replace,
-        }),
-      ),
+      addPackages(),
       addScriptsToPackageJson(),
     ]);
   };
