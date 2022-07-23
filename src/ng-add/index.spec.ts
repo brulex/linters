@@ -1,11 +1,13 @@
+import { Tree } from '@angular-devkit/schematics';
 import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
+
 import { Schema as ApplicationOptions } from '@schematics/angular/application/schema';
 import { Schema as WorkspaceOptions } from '@schematics/angular/workspace/schema';
-import { ConfigureLintersSchema } from './schema';
+
 import * as path from 'path';
-import { Tree } from '@angular-devkit/schematics';
-import { CONFIGURE_LINTERS_PACKAGES, LATEST_VERSIONS } from '../utility/packages';
-import { PACKAGE_JSON_SCRIPTS } from '../utility/packages/scripts';
+
+import { CONFIGURE_LINTERS_PACKAGES, LATEST_VERSIONS, PACKAGE_JSON_SCRIPTS } from '../utility/packages';
+import { ConfigureLintersSchema } from './schema';
 
 interface PackageJson {
   scripts: Record<string, string>;

@@ -11,12 +11,12 @@ import {
   url,
 } from '@angular-devkit/schematics';
 import { getWorkspace } from '@schematics/angular/utility/workspace';
+
 import { addDependency, DependencyType, ExistingBehavior } from '@schematics/angular/utility';
 import { JSONFile } from '@schematics/angular/utility/json-file';
 
-import { LATEST_VERSIONS, CONFIGURE_LINTERS_PACKAGES } from '../utility/packages';
+import { LATEST_VERSIONS, CONFIGURE_LINTERS_PACKAGES, PACKAGE_JSON_SCRIPTS } from '../utility/packages';
 import { ConfigureLintersSchema } from './schema';
-import { PACKAGE_JSON_SCRIPTS } from '../utility/packages/scripts';
 
 function addScriptsToPackageJson(): Rule {
   return host => {
