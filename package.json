@@ -9,7 +9,10 @@
     "clear": "tsc --build --clean",
     "version": "standard-version",
     "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prettier-base": "prettier \"{**/*,*}.{js,ts,html,scss,json}\" --ignore-path .gitignore --loglevel=warn",
+    "prettier": "npm run prettier-base -- --check",
+    "prettier-fix": "npm run prettier-base -- --write"
   },
   "main": "src/index.js",
   "keywords": [
