@@ -15,24 +15,14 @@ import { addDependency, DependencyType, ExistingBehavior } from '@schematics/ang
 import { JSONFile } from '@schematics/angular/utility/json-file';
 
 import { LATEST_VERSIONS, CONFIGURE_LINTERS_PACKAGES } from '../utility/packages';
-import { Schema as ConfigureLintersSchema } from './schema';
+import { ConfigureLintersSchema } from './schema';
+import { PACKAGE_JSON_SCRIPTS } from '../utility/packages/scripts';
 
 function addScriptsToPackageJson(): Rule {
   return host => {
     const pkgJson = new JSONFile(host, 'package.json');
-    const scripts = {
-      lint: 'run-p -c -l stylelint eslint prettier',
-      'lint-fix': 'run-p -c -l stylelint-fix eslint-fix prettier-fix ',
-      stylelint: 'stylelint "./src/**/*.scss"',
-      'stylelint-fix': 'npm run stylelint -- --fix',
-      eslint: 'eslint .',
-      'eslint-fix': 'npm run eslint -- --fix',
-      'prettier-base': 'prettier "{**/*,*}.{js,ts,html,scss,json}" --ignore-path .gitignore --loglevel=warn',
-      prettier: 'npm run prettier-base -- --check',
-      'prettier-fix': 'npm run prettier-base -- --write',
-    };
 
-    Object.entries(scripts).forEach(([scriptName, script]) => {
+    Object.entries(PACKAGE_JSON_SCRIPTS).forEach(([scriptName, script]) => {
       const scriptPath = ['scripts', scriptName];
       if (!pkgJson.get(scriptPath)) {
         pkgJson.modify(scriptPath, script, false);

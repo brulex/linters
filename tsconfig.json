@@ -7,6 +7,7 @@
     "allowUnusedLabels": false,
     "declaration": false,
     "declarationMap": false,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "module": "commonjs",
     "moduleResolution": "node",
@@ -25,7 +26,7 @@
     "pretty": true,
     "strictNullChecks": true,
     "target": "es6",
-    "types": ["node"]
+    "types": ["node", "@types/jest"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["src/*/files/**/*", "src/**/*spec.ts"]

@@ -2,10 +2,23 @@
   "description": "Package versions used by schematics",
   "comment": "This file is needed so that dependencies are synced.",
   "private": true,
+  "scripts": {
+    "lint": "run-p -c -l stylelint eslint prettier",
+    "lint-fix": "run-p -c -l stylelint-fix eslint-fix prettier-fix ",
+    "stylelint": "stylelint \"./src/**/*.scss\"",
+    "stylelint-fix": "npm run stylelint -- --fix",
+    "eslint": "eslint .",
+    "eslint-fix": "npm run eslint -- --fix",
+    "prettier-base": "prettier \"{**/*,*}.{js,ts,html,scss,json}\" --ignore-path .gitignore --loglevel=warn",
+    "prettier": "npm run prettier-base -- --check",
+    "prettier-fix": "npm run prettier-base -- --write"
+  },
   "dependencies": {
     "@angular-eslint/eslint-plugin": "^13.0.1",
     "@angular-eslint/eslint-plugin-template": "^13.0.1",
     "@angular-eslint/template-parser": "^13.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.5.0",

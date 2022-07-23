@@ -1,8 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "eslint",
+  "$id": "@blx/linters/ng-add",
   "title": "Add linters with configurations to project",
   "type": "object",
+  "required": [],
   "additionalProperties": false,
   "properties": {
     "project": {
