@@ -55,7 +55,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Version up
-        run: npm version
+        run: npm run version
 
       - name: Push changes
         run: git push --tags
@@ -83,6 +83,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - run: npm publish
+      - name: Publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
