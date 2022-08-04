@@ -1,6 +1,6 @@
 {
   "name": "@brulex/linters",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Schematic to configure env with linters by @brulex",
   "homepage": "https://github.com/brulex/linters#readme",
   "scripts": {

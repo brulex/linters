@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.1.2 (2022-08-04)
+
 ### [1.1.1](https://github.com/brulex/linters/compare/v1.1.0...v1.1.1) (2022-07-23)
 
 
