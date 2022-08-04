@@ -1,8 +1,16 @@
 name: Release
 
 on:
-  release:
-    types: [created]
+  workflow_call:
+   inputs:
+      version_on:
+        required: false
+        type: boolean
+        default: true
+      publish_on:
+        required: false
+        type: boolean
+        default: true
 
 jobs:
   setup:
@@ -28,6 +36,7 @@ jobs:
         run: npm ci
 
   version:
+    if: ${{ inputs.version_on == true }}
     needs: setup
     runs-on: ubuntu-latest
     steps:
@@ -52,6 +61,7 @@ jobs:
         run: git push --tags
 
   publish:
+    if: ${{ inputs.publish_on == true }}
     needs: setup
     runs-on: ubuntu-latest
     steps:
