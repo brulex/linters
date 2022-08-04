@@ -63,7 +63,7 @@ jobs:
         run: npm run version
 
       - name: Push changes
-        run: git push --tags
+        run: git push --follow-tags
 
   publish:
     if: ${{ inputs.publish_on == true }}
