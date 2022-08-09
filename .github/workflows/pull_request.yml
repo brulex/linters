@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: brulex/linters/actions/npm-cache@brulex-patch-1
+      - uses: brulex/linters/actions/npm-cache@master
 
   prettier:
     name: Prettier check
@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: brulex/linters/actions/npm-cache@brulex-patch-1
+      - uses: brulex/linters/actions/npm-cache@master
 
       - name: Run prettier
         run: npm run prettier
@@ -42,7 +42,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: brulex/linters/actions/npm-cache@brulex-patch-1
+      - uses: brulex/linters/actions/npm-cache@master
 
       - name: Run prettier
         run: npm run test
@@ -56,7 +56,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: brulex/linters/actions/npm-cache@brulex-patch-1
+      - uses: brulex/linters/actions/npm-cache@master
 
       - name: Run build
         run: npm run build
