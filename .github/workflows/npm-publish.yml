@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: brulex/linters/actions/npm-cache@brulex-patch-1
+      - uses: brulex/linters/actions/npm-cache@master
 
   version:
     if: ${{ inputs.version_on == true }}
@@ -32,7 +32,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: brulex/linters/actions/npm-cache@brulex-patch-1
+      - uses: brulex/linters/actions/npm-cache@master
 
       - name: Setup Git user
         run: |
@@ -55,7 +55,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - uses: brulex/linters/actions/npm-cache@brulex-patch-1
+      - uses: brulex/linters/actions/npm-cache@master
 
       - name: Build
         run: npm run build
