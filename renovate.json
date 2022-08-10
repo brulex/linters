@@ -5,7 +5,8 @@
   "packageRules": [
     {
       "matchPaths": ["src/utility/packages/package.json"],
-      "extends": ["config:base", ":semanticCommitTypeAll(feat)"]
+      "extends": ["config:base", ":semanticCommitTypeAll(feat)"],
+      "rangeStrategy": "bump"
     }
   ]
 }
