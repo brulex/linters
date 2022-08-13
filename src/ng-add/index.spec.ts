@@ -6,7 +6,7 @@ import { Schema as WorkspaceOptions } from '@schematics/angular/workspace/schema
 
 import * as path from 'path';
 
-import { CONFIGURE_LINTERS_PACKAGES, LATEST_VERSIONS, PACKAGE_JSON_SCRIPTS } from '../utility/packages';
+import { CONFIGURE_LINTERS_PACKAGES, PACKAGES_WITH_LATEST_VERSIONS, PACKAGE_JSON_SCRIPTS } from '../utility/packages';
 import { ConfigureLintersSchema } from './schema';
 
 interface PackageJson {
@@ -18,7 +18,7 @@ interface PackageJson {
 const collectionPath = path.join(__dirname, '../collection.json');
 const testRunner = new SchematicTestRunner('schematics', collectionPath);
 
-const defaultOptions: ConfigureLintersSchema = { project: 'bar' };
+const DEFAULT_OPTIONS: ConfigureLintersSchema = { project: 'bar' };
 const workspaceOptions: WorkspaceOptions = {
   name: 'workspace',
   newProjectRoot: 'projects',
@@ -36,6 +36,7 @@ const appOptions: ApplicationOptions = {
 
 describe('ng-add', () => {
   let appTree: UnitTestTree;
+
   beforeEach(async () => {
     appTree = await testRunner
       .runExternalSchematicAsync('@schematics/angular', 'workspace', workspaceOptions)
@@ -45,12 +46,16 @@ describe('ng-add', () => {
       .toPromise();
   });
 
+  const runSchematic = async (tree: Tree, options: ConfigureLintersSchema = DEFAULT_OPTIONS) => {
+    return await testRunner.runSchematicAsync('ng-add', { ...options }, tree).toPromise();
+  };
+
   it('fails with missing tree', async () => {
-    expect(testRunner.runSchematicAsync('ng-add', { ...defaultOptions }, Tree.empty()).toPromise()).rejects.toThrow();
+    expect(runSchematic(Tree.empty())).rejects.toThrow();
   });
 
   it('fails if angular project does not exists', async () => {
-    expect(testRunner.runSchematicAsync('ng-add', { project: 'not-exists' }, appTree).toPromise()).rejects.toThrow();
+    expect(runSchematic(appTree, { project: 'not-exists' })).rejects.toThrow();
   });
 
   it.each`
@@ -59,9 +64,8 @@ describe('ng-add', () => {
     ${'.stylelintrc.json'} | ${[/stylelint-config-recommended-scss/]}
     ${'.prettierrc.json'}  | ${[/arrowParens": "avoid/, /"files": "\*\.component.html",/]}
   `('should create $file config file', async ({ file, contentToCheck }: { file: string; contentToCheck: RegExp[] }) => {
-    const options = { ...defaultOptions };
     const filePath = `/projects/bar/${file}`;
-    const tree = await testRunner.runSchematicAsync('ng-add', options, appTree).toPromise();
+    const tree = await runSchematic(appTree);
     expect(tree.files).toContain(filePath);
     const moduleContent = tree.readContent(filePath);
     contentToCheck.forEach(check => {
@@ -70,13 +74,12 @@ describe('ng-add', () => {
   });
 
   it('should contain all packages from latest versions', async () => {
-    expect(Object.keys(LATEST_VERSIONS).sort()).toEqual(CONFIGURE_LINTERS_PACKAGES.sort());
+    expect(Object.keys(PACKAGES_WITH_LATEST_VERSIONS).sort()).toEqual(CONFIGURE_LINTERS_PACKAGES.sort());
   });
 
   it('should install additional packages', async () => {
-    const options = { ...defaultOptions };
     const filePath = `/package.json`;
-    const tree = await testRunner.runSchematicAsync('ng-add', options, appTree).toPromise();
+    const tree = await runSchematic(appTree);
     const moduleContent = tree.readContent(filePath);
     const packageJson: PackageJson = JSON.parse(moduleContent);
     expect(CONFIGURE_LINTERS_PACKAGES.length).toBeGreaterThan(1);
@@ -91,14 +94,13 @@ describe('ng-add', () => {
         packageName in packageJson.dependencies ? toBeInDeps('dependencies') : notToBeInDeps('dependencies'),
       ).toEqual(notToBeInDeps('dependencies'));
 
-      expect(packageJson.devDependencies[packageName]).toEqual(LATEST_VERSIONS[packageName]);
+      expect(packageJson.devDependencies[packageName]).toEqual(PACKAGES_WITH_LATEST_VERSIONS[packageName]);
     });
   });
 
   it('should add linting scripts', async () => {
-    const options = { ...defaultOptions };
     const filePath = `/package.json`;
-    const tree = await testRunner.runSchematicAsync('ng-add', options, appTree).toPromise();
+    const tree = await runSchematic(appTree);
     const moduleContent = tree.readContent(filePath);
     const packageJson: PackageJson = JSON.parse(moduleContent);
 
