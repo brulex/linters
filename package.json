@@ -9,6 +9,7 @@
     "clear": "tsc --build --clean",
     "version": "standard-version",
     "prerelease": "standard-version --prerelease",
+    "publish": "npm publish --access=public",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "prettier-base": "prettier \"{**/*,*}.{js,ts,html,scss,json}\" --ignore-path .gitignore --loglevel=warn",
