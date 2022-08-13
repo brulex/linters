@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0-0](https://github.com/brulex/linters/compare/v1.2.0...v1.3.0-0) (2022-08-13)
+
+
+### Features
+
+* **deps:** update dependency eslint-import-resolver-typescript to ^3.4.1 ([37fd5b4](https://github.com/brulex/linters/commit/37fd5b42ca5ae813a08390f7f5028a1e66357cc5))
+* **ng-add:** allow to overwrite lint configs ([f00a21f](https://github.com/brulex/linters/commit/f00a21f1facb55334b6291c4434477fbaba67193))
+
+
+### Bug Fixes
+
+* fix ability to run schematic ([644f02f](https://github.com/brulex/linters/commit/644f02fca52e3bdafee91a96bdabc0d30288eae7))
+
 ## [1.2.0](https://github.com/brulex/linters/compare/v1.1.1...v1.2.0) (2022-08-10)
 
 

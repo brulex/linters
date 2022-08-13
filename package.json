@@ -1,6 +1,6 @@
 {
   "name": "@brulex/linters",
-  "version": "1.2.0",
+  "version": "1.3.0-0",
   "description": "Schematic to configure env with linters by @brulex",
   "homepage": "https://github.com/brulex/linters#readme",
   "scripts": {
@@ -8,6 +8,7 @@
     "build:watch": "npm run build -- --watch",
     "clear": "tsc --build --clean",
     "version": "standard-version",
+    "prerelease": "standard-version --prerelease",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "prettier-base": "prettier \"{**/*,*}.{js,ts,html,scss,json}\" --ignore-path .gitignore --loglevel=warn",
