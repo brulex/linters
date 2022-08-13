@@ -11,9 +11,9 @@ import {
   url,
   MergeStrategy,
 } from '@angular-devkit/schematics';
-import { getWorkspace, ProjectDefinition } from '@schematics/angular/utility/workspace';
+import { ProjectDefinition } from '@schematics/angular/utility/workspace';
 
-import { addDependency, DependencyType } from '@schematics/angular/utility';
+import { addDependency, DependencyType, readWorkspace } from '@schematics/angular/utility';
 import { JSONFile } from '@schematics/angular/utility/json-file';
 
 import { PACKAGES_WITH_LATEST_VERSIONS, CONFIGURE_LINTERS_PACKAGES, PACKAGE_JSON_SCRIPTS } from '../utility/packages';
@@ -48,8 +48,13 @@ function addPackages(): Rule {
   );
 }
 
-async function getProject(host: Tree, options: ConfigureLintersSchema): Promise<ProjectDefinition> {
-  const workspace = await getWorkspace(host);
+export function getWorkspacePath(host: Tree) {
+  const possibleFiles = ['/workspace.json', '/angular.json', '/.angular.json'];
+  return possibleFiles.filter(path => host.exists(path))[0];
+}
+
+async function getProject(tree: Tree, options: ConfigureLintersSchema): Promise<ProjectDefinition> {
+  const workspace = await readWorkspace(tree, getWorkspacePath(tree));
   const project = workspace.projects.get(options.project);
 
   if (!project) {
