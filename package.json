@@ -31,10 +31,11 @@
   "author": "brulex",
   "license": "MIT",
   "schematics": "./src/collection.json",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "@angular-devkit/schematics": "^14.1.2",
-    "@schematics/angular": "^14.1.2",
+    "@schematics/angular": "^14.1.2"
+  },
+  "devDependencies": {
     "@types/jest": "^28.1.6",
     "@types/node": "16.11.48",
     "jest": "^28.1.3",
