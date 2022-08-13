@@ -9,6 +9,7 @@ import {
   move,
   strings,
   url,
+  MergeStrategy,
 } from '@angular-devkit/schematics';
 import { getWorkspace, ProjectDefinition } from '@schematics/angular/utility/workspace';
 
@@ -70,7 +71,7 @@ async function addConfigFiles(host: Tree, options: ConfigureLintersSchema): Prom
     move(project.root),
   ]);
 
-  return mergeWith(templateSource);
+  return mergeWith(templateSource, MergeStrategy.Overwrite);
 }
 
 export default function (options: ConfigureLintersSchema): Rule {

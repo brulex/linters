@@ -108,4 +108,18 @@ describe('ng-add', () => {
       expect(packageJson.scripts[scriptName]).toEqual(script);
     });
   });
+
+  it.each`
+    file                   | content
+    ${'.eslintrc.json'}    | ${'{ "extends": "minimal" }'}
+    ${'.stylelintrc.json'} | ${'{ "extends": "stylelint-config-standard" }'}
+    ${'.prettierrc.json'}  | ${'{ "tabWidth": 4, "semi": false, "singleQuote": true }'}
+  `('should overwrite $file config file', async ({ file, content }: { file: string; content: string }) => {
+    const filePath = `/projects/bar/${file}`;
+    appTree.create(filePath, content);
+    expect(appTree.readContent(filePath)).toContain(content);
+    const tree = await runSchematic(appTree);
+    const moduleContent = tree.readContent(filePath);
+    expect(moduleContent).not.toMatch(content);
+  });
 });
