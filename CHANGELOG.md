@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0-1](https://github.com/brulex/linters/compare/v1.3.0-0...v1.3.0-1) (2022-08-13)
+
+
+### Bug Fixes
+
+* attempt to fix read project func ([3ce29f7](https://github.com/brulex/linters/commit/3ce29f7f5e0460b409d9c05458dddada9da1726b))
+
 ## [1.3.0-0](https://github.com/brulex/linters/compare/v1.2.0...v1.3.0-0) (2022-08-13)
 
 
