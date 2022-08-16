@@ -1,4 +1,5 @@
 # Angular linters configuration
+[![npm version](https://badge.fury.io/js/@brulex%2Flinters.svg)](https://badge.fury.io/js/@brulex%2Flinters)
 
 This schematic allow to add to your environment linters for ts/js/html/css/sass/scss/json and other.
 There are 3 main tools for linting in this schematic:
