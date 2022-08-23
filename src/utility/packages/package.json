@@ -14,9 +14,9 @@
     "prettier-fix": "npm run prettier-base -- --write"
   },
   "dependencies": {
-    "@angular-eslint/eslint-plugin": "^14.0.2",
-    "@angular-eslint/eslint-plugin-template": "^14.0.2",
-    "@angular-eslint/template-parser": "^14.0.2",
+    "@angular-eslint/eslint-plugin": "^14.0.3",
+    "@angular-eslint/eslint-plugin-template": "^14.0.3",
+    "@angular-eslint/template-parser": "^14.0.3",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "eslint": "^8.21.0",
