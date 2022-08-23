@@ -18,7 +18,7 @@
     "noImplicitThis": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "rootDir": "src/",
+    "rootDir": "",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "sourceMap": false,
@@ -29,5 +29,5 @@
     "types": ["node", "@types/jest"]
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["src/*/files/**/*", "src/**/*spec.ts"]
+  "exclude": ["src/*/files/**/*", "src/**/*spec.ts", "src/utility/testing/**/*"]
 }

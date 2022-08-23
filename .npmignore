@@ -6,7 +6,9 @@
 jest.config.js
 .gitignore
 tsconfig.json
+verdaccio.yaml
 coverage
 actions
 .github
 renovate.json
+src/utility/testing

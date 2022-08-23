@@ -1,0 +1,46 @@
+storage: ./storage
+auth:
+  auth-memory:
+    users:
+      foo:
+        name: foo
+        password: bar
+      admin:
+        name: foo
+        password: bar
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
+
+packages:
+  "@brulex/*":
+    access: $all
+    publish: $authenticated
+    unpublish: $authenticated
+  "**":
+    access: $all
+    publish: $all
+    unpublish: $all
+    proxy: npmjs
+
+# rate limit configuration
+rateLimit:
+  windowMs: 1000
+  max: 10000
+
+middlewares:
+  audit:
+    enabled: true
+
+security:
+  api:
+    jwt:
+      sign:
+        expiresIn: 1d
+
+logs: { type: stdout, format: pretty, level: http }
+i18n:
+  web: en-US
+
+# try to use verdaccio with child_process:fork
+_debug: false

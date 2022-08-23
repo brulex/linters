@@ -1,0 +1,104 @@
+{
+	"name": "@brulex/linters",
+	"versions": {
+		"1.3.0": {
+			"name": "@brulex/linters",
+			"version": "1.3.0",
+			"description": "Schematic to configure env with linters by @brulex",
+			"homepage": "https://github.com/brulex/linters#readme",
+			"scripts": {
+				"build": "tsc -p tsconfig.json",
+				"build:watch": "npm run build -- --watch",
+				"clear": "tsc --build --clean",
+				"version": "standard-version",
+				"prerelease": "standard-version --prerelease",
+				"release": "npm publish --access=public",
+				"test": "jest --coverage",
+				"test:watch": "jest --watch",
+				"prettier-base": "prettier \"{**/*,*}.{js,ts,html,scss,json}\" --ignore-path .gitignore --loglevel=warn",
+				"prettier": "npm run prettier-base -- --check",
+				"prettier-fix": "npm run prettier-base -- --write"
+			},
+			"bin": {
+				"brulex-linter": "src/bin/brulex-linter.js"
+			},
+			"main": "src/index.js",
+			"keywords": [
+				"eslint",
+				"prettier",
+				"stylelint",
+				"schematics"
+			],
+			"repository": {
+				"type": "git",
+				"url": "git+https://github.com/brulex/linters.git"
+			},
+			"bugs": {
+				"url": "https://github.com/brulex/linters/issues"
+			},
+			"publishConfig": {
+				"access": "public"
+			},
+			"author": {
+				"name": "brulex"
+			},
+			"license": "MIT",
+			"schematics": "./src/collection.json",
+			"dependencies": {
+				"@angular-devkit/schematics": "^14.1.2",
+				"@angular-devkit/schematics-cli": "^14.1.2",
+				"@schematics/angular": "^14.1.2",
+				"chalk": "^5.0.1"
+			},
+			"devDependencies": {
+				"@types/jest": "^28.1.6",
+				"@types/node": "16.11.48",
+				"get-port": "^5.1.1",
+				"jest": "^28.1.3",
+				"npm-cli-login": "^1.0.0",
+				"prettier": "2.7.1",
+				"standard-version": "^9.5.0",
+				"ts-jest": "^28.0.7",
+				"typescript": "~4.7.4",
+				"verdaccio": "^5.14.0",
+				"verdaccio-auth-memory": "^10.2.0",
+				"verdaccio-memory": "^10.3.0"
+			},
+			"peerDependencies": {
+				"@angular-devkit/schematics": ">= 14.1.0 < 15.0.0",
+				"@schematics/angular": ">= 14.1.0 < 15.0.0"
+			},
+			"readmeFilename": "README.md",
+			"gitHead": "f310f1733cf3c960e45706a47569f517c8ef7a02",
+			"_id": "@brulex/linters@1.3.0",
+			"_nodeVersion": "16.15.1",
+			"_npmVersion": "8.5.0",
+			"dist": {
+				"integrity": "sha512-Z8fYwdWdz3xeZ21qGroTZC3D96tMeDTD7yeuISReKUdjjBbVhBTjRyzA9+lXXaYfdMSnHC7GfbwNQz3z6HdO5A==",
+				"shasum": "d0afc79661b631b4c2e9798a79cd3f3280f6a076",
+				"tarball": "http://localhost:45319/@brulex/linters/-/@brulex/linters-1.3.0.tgz"
+			},
+			"contributors": []
+		}
+	},
+	"time": {
+		"modified": "2022-08-23T17:24:34.366Z",
+		"created": "2022-08-23T17:24:34.366Z",
+		"1.3.0": "2022-08-23T17:24:34.366Z"
+	},
+	"users": {},
+	"dist-tags": {
+		"latest": "1.3.0"
+	},
+	"_uplinks": {},
+	"_distfiles": {},
+	"_attachments": {
+		"linters-1.3.0.tgz": {
+			"shasum": "d0afc79661b631b4c2e9798a79cd3f3280f6a076",
+			"version": "1.3.0"
+		}
+	},
+	"_rev": "",
+	"_id": "@brulex/linters",
+	"readme": "# Angular linters configuration\n[![npm version](https://badge.fury.io/js/@brulex%2Flinters.svg)](https://badge.fury.io/js/@brulex%2Flinters)\n\nThis schematic allow to add to your environment linters for ts/js/html/css/sass/scss/json and other.\nThere are 3 main tools for linting in this schematic:\n* [prettier](https://prettier.io/)\n* [eslint](https://eslint.org/)\n  * [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint)\n* [stylelint](https://stylelint.io/)\n  * [stylelint-scss](https://github.com/stylelint-scss/stylelint-scss)\n\n## Installation and usage\n\nTo use this schematic you need to use Angular CLI directly(the package will be installed in this case)\n\n```bash\nng add @brulex/linters\n```\n\nAfter running this command to your environment will be added:\n* all needed packages for linters + `npm-run-all` to run all linters simultaneous\n* config files for each linter: `.eslintrc.json`, `.prettierrc.json`, `.stylelintrc.json`\n* scripts to run linting\n\nTo start lint you could run the following command:\n```bash\nnpm run lint\n```\n\n## Compatibility with Angular\nAt the moment supported only **Angular 14**, in future will be considered adding support for this schematic to older versions\n"
+}
