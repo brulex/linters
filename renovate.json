@@ -7,6 +7,7 @@
   "automergeType": "pr",
   "ignoreTests": true,
   "automergeComment": "update schematics deps",
+  "matchDepTypes": ["dependencies", "devDependencies"],
   "packageRules": [
     {
       "matchPaths": ["src/utility/packages/package.json"],
