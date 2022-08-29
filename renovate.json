@@ -1,18 +1,20 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":semanticCommitTypeAll(chore)"],
-  "rangeStrategy": "bump",
-  "groupName": "schematics-deps",
   "automerge": true,
   "automergeType": "pr",
   "ignoreTests": true,
-  "automergeComment": "update schematics deps",
-  "matchDepTypes": ["dependencies", "devDependencies"],
   "packageRules": [
+    {
+      "matchPaths": ["package.json"],
+      "groupName": "schematics-deps",
+      "matchDepTypes": ["dependencies", "devDependencies"],
+      "extends": ["config:base", ":semanticCommitTypeAll(chore)"],
+      "rangeStrategy": "bump"
+    },
     {
       "matchPaths": ["src/utility/packages/package.json"],
       "groupName": "linters-deps",
-      "automergeComment": "update linters deps",
+      "matchDepTypes": ["dependencies", "devDependencies"],
       "extends": ["config:base", ":semanticCommitTypeAll(feat)"],
       "rangeStrategy": "bump"
     }
