@@ -4,11 +4,14 @@
   "rangeStrategy": "bump",
   "groupName": "schematics-deps",
   "automerge": true,
-  "automergeType": "branch",
+  "automergeType": "pr",
+  "ignoreTests": true,
+  "automergeComment": "update schematics deps",
   "packageRules": [
     {
       "matchPaths": ["src/utility/packages/package.json"],
       "groupName": "linters-deps",
+      "automergeComment": "update linters deps",
       "extends": ["config:base", ":semanticCommitTypeAll(feat)"],
       "rangeStrategy": "bump"
     }
