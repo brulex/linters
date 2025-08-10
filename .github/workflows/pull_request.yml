@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 16.20.2
       - uses: brulex/linters/actions/npm-cache@master
 
   prettier:
@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 16.20.2
       - uses: brulex/linters/actions/npm-cache@master
 
       - name: Run prettier
@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 16.20.2
       - uses: brulex/linters/actions/npm-cache@master
 
       - name: Run prettier
@@ -55,7 +55,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 16.20.2
       - uses: brulex/linters/actions/npm-cache@master
 
       - name: Run build
